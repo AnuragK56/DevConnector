@@ -9,7 +9,12 @@ const db = config.get("mongoURI");
 //FUNCTION TO CONNECT TO MONGODB DATABASE OTHERWISE SEND ERROR
 const connectDB = async () => {
   try {
-    await mongoose.connect(db, { useUnifiedTopology: true });
+    await mongoose.connect(db, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true
+    });
+
     console.log("MongoDB is connected...");
   } catch (err) {
     console.log(err.message);
